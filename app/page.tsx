@@ -1,5 +1,5 @@
 import { NotionRenderer } from "react-notion";
-import "react-notion/src/styles.css";
+import "@/styles/notion.css";
 
 async function fetchNotion() {
   const notionResponse = await fetch(
