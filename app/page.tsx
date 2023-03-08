@@ -1,9 +1,12 @@
 import { NotionRenderer } from "react-notion";
 import "@/styles/notion.css";
+import Intro from "@/components/Intro";
+import About from "@/components/About";
+import Title from "@/components/Title";
 
 async function fetchNotion() {
   const notionResponse = await fetch(
-    "https://notion-api.splitbee.io/v1/page/14304e546f5047cba2f0a02d8b2c77cd",
+    "https://notion-api.splitbee.io/v1/page/5270add7aa9f4c5888562036a62444cb",
     {
       // cache: "force-cache", // SSG
       cache: "no-store", // SSR
@@ -22,5 +25,14 @@ async function fetchNotion() {
 export default async function Home() {
   const notion = await fetchNotion();
 
-  return <NotionRenderer blockMap={notion} />;
+  return (
+    <main>
+      <Intro />
+      <About />
+      <section id="title-PROJECTS">
+        <Title title={"PROJECTS"} />
+        <NotionRenderer blockMap={notion} />
+      </section>
+    </main>
+  );
 }

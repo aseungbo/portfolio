@@ -12,7 +12,7 @@ export default function RootLayout({
       <head />
       <body>
         <Header />
-        {children}
+        <main className=" text-white bg-black mt-[88px]">{children}</main>
         <Footer />
       </body>
     </html>
