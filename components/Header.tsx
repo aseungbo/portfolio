@@ -1,33 +1,29 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useState } from "react";
+import ScrollIndicator from "./ScrollIndicator";
 
 export default function Header(): JSX.Element {
-  const targetRef = useRef<HTMLDivElement>(null);
+  const [menu, setMenu] = useState<string[]>([
+    "HOME",
+    "ABOUT",
+    "PROJECTS",
+    "CONTACT",
+  ]);
 
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    const clientHeight =
-      document.documentElement.clientHeight || window.innerHeight;
-    const scrollHeight =
-      document.documentElement.scrollHeight || document.body.scrollHeight;
-    const totalHeight = scrollHeight - clientHeight;
-    const targetWidth = (scrollY / totalHeight) * 100;
-    if (targetRef.current) targetRef.current.style.width = targetWidth + "%";
+  const handleClick = (menu: string) => {
+    const element = document.querySelector(`#${menu}`);
+    if (element) {
+      console.log(element?.offsetTop);
+      document.scrollingElement?.scrollTo({
+        top: element?.offsetTop - 120,
+        behavior: "smooth",
+      });
+    }
   };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      window.addEventListener("scroll", handleScroll);
-    }, 100);
-    return () => {
-      clearInterval(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <header className="fixed top-0 z-50 w-full bg-white">
+    <header id="HOME" className="fixed top-0 z-50 w-full bg-white">
       <div className="flex justify-between w-11/12 m-auto font-bold">
         <div className="flex">
           <button
@@ -43,53 +39,20 @@ export default function Header(): JSX.Element {
           </button>
         </div>
         <div className="flex">
-          <button
-            className="px-12 py-8 cursor-pointer hover:text-blue-600 "
-            onClick={() =>
-              document.scrollingElement?.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })
-            }
-          >
-            HOME
-          </button>
-          <button
-            className="px-12 py-8 cursor-pointer hover:text-blue-600"
-            onClick={() =>
-              document.scrollingElement?.scrollTo({
-                top: 841,
-                behavior: "smooth",
-              })
-            }
-          >
-            ABOUT
-          </button>
-          <button
-            className="px-12 py-8 cursor-pointer hover:text-blue-600"
-            onClick={() =>
-              document.scrollingElement?.scrollTo({
-                top: 1293,
-                behavior: "smooth",
-              })
-            }
-          >
-            PROJECTS
-          </button>
-          <button
-            className="px-12 py-8 cursor-pointer hover:text-blue-600"
-            onClick={() =>
-              document.scrollingElement?.scrollTo({
-                top: 3006,
-                behavior: "smooth",
-              })
-            }
-          >
-            CONTACT
-          </button>
+          {menu.map((menu, idx) => {
+            return (
+              <button
+                key={idx}
+                className="px-12 py-8 cursor-pointer hover:text-blue-600 "
+                onClick={() => handleClick(menu)}
+              >
+                {menu}
+              </button>
+            );
+          })}
         </div>
       </div>
-      <div ref={targetRef} className="w-0 h-1 bg-blue-600 rounded-sm"></div>
+      <ScrollIndicator />
     </header>
   );
 }

@@ -605,6 +605,10 @@ video {
   border-bottom-width: 1px;
 }
 
+.border-t-\[1px\] {
+  border-top-width: 1px;
+}
+
 .border-blue-600 {
   --tw-border-opacity: 1;
   border-color: rgb(37 99 235 / var(--tw-border-opacity));
@@ -684,6 +688,11 @@ video {
 
 .underline {
   text-decoration-line: underline;
+}
+
+.only\:py-16:only-child {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .hover\:border-b-\[1px\]:hover {
