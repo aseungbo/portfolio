@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"next dev --turbo\" \"tailwindcss --input ./styles/input.css --output ./styles/output.css --watch\"",
-    "build": "tailwindcss ./styles/input.css --output ./styles/output.css && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build": "tailwindcss ./styles/input.css --output ./styles/output.css && next build"
   },
   "dependencies": {
     "@types/node": "18.14.5",

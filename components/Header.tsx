@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 
 export default function Header(): JSX.Element {
-  const targetRef = useRef(null);
+  const targetRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
