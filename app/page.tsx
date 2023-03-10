@@ -3,6 +3,7 @@ import "@/styles/notion.css";
 import Intro from "@/components/Intro";
 import About from "@/components/About";
 import Title from "@/components/Title";
+import Contact from "@/components/Contact";
 
 async function fetchNotion() {
   const notionResponse = await fetch(
@@ -15,7 +16,6 @@ async function fetchNotion() {
       // },
     }
   );
-  console.log(notionResponse);
   if (!notionResponse.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -29,10 +29,11 @@ export default async function Home() {
     <main>
       <Intro />
       <About />
-      <section id="title-PROJECTS">
+      <section id="PROJECTS">
         <Title title={"PROJECTS"} />
         <NotionRenderer blockMap={notion} />
       </section>
+      <Contact />
     </main>
   );
 }
