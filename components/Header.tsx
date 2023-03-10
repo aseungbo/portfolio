@@ -12,9 +12,8 @@ export default function Header(): JSX.Element {
   ]);
 
   const handleClick = (menu: string) => {
-    const element = document.querySelector(`#${menu}`);
+    const element: HTMLElement | null = document.querySelector(`#${menu}`);
     if (element) {
-      console.log(element?.offsetTop);
       document.scrollingElement?.scrollTo({
         top: element?.offsetTop - 120,
         behavior: "smooth",
@@ -27,7 +26,7 @@ export default function Header(): JSX.Element {
       <div className="flex justify-between w-11/12 m-auto font-bold">
         <div className="flex">
           <button
-            className="cursor-pointer hover:text-blue-600"
+            className="px-12 py-8 cursor-pointer hover:text-blue-600"
             onClick={() =>
               document.scrollingElement?.scrollTo({
                 top: 0,

@@ -16,7 +16,6 @@ async function fetchNotion() {
       // },
     }
   );
-  console.log(notionResponse);
   if (!notionResponse.ok) {
     throw new Error("Failed to fetch data");
   }
