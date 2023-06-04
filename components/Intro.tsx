@@ -18,12 +18,12 @@ export default function Intro(): JSX.Element {
       <div className="flex flex-col items-center justify-center w-11/12 h-full gap-4 m-auto">
         <Profile />
         <div className="flex justify-center gap-4">
-          <button
+          {/* <button
             className="p-4  w-32 hover:font-bold hover:border-blue-600 hover:border-b-[2px]  border-black border-b-[2px]"
             onClick={() => handleClick("ABOUT")}
           >
             About me
-          </button>
+          </button> */}
           <button
             className="p-4 w-32 hover:font-bold hover:border-blue-600 hover:border-b-[2px]  border-black border-b-[2px]"
             onClick={() => handleClick("PROJECTS")}
